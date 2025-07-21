@@ -1,8 +1,10 @@
 
-html, body {
+/* Estilo para asegurar que el video cubra toda la pantalla sin deformarse ni hacer zoom extraño */
+body, html {
   margin: 0;
   padding: 0;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -10,15 +12,16 @@ html, body {
   position: fixed;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
   width: auto;
   height: auto;
   z-index: -1;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  background-size: cover;
+  pointer-events: none;
 }
+
 
 
 #content {
