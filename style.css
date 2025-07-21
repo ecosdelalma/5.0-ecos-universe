@@ -1,26 +1,22 @@
-
-imagen_iso_uno video {
-    float: left;
-    padding: 10px;
-    width: 70%;
-    margin-top: 40px;
-    margin-left: 20px;
-    background-color: seagreen;
-    border-radius: 3rem;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
-.texto_iso {
-    background-color: rgb(241, 241, 241);
-    float: left;
-    padding: 10px;
-    width: 600px;
-    height: auto;
-    margin-top: 40px;
-    margin-left: 20px;
+/* Fondo de video ajustado */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
 }
-
-
-
 
 #content {
   position: absolute;
