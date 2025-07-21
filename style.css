@@ -1,26 +1,24 @@
 
-/* Estilo para asegurar que el video cubra toda la pantalla sin deformarse ni hacer zoom extraño */
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+imagen_iso_uno video {
+    float: left;
+    padding: 10px;
+    width: 70%;
+    margin-top: 40px;
+    margin-left: 20px;
+    background-color: seagreen;
+    border-radius: 3rem;
 }
 
-#background-video {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100vw;
-  min-height: 100vh;
-  width: auto;
-  height: auto;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  pointer-events: none;
+.texto_iso {
+    background-color: rgb(241, 241, 241);
+    float: left;
+    padding: 10px;
+    width: 600px;
+    height: auto;
+    margin-top: 40px;
+    margin-left: 20px;
 }
+
 
 
 
