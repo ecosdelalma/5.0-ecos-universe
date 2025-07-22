@@ -1,16 +1,11 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+# HTML con ajustes finales: botón centrado (en la mitad del mar) y video ajustado para PC
+html_final = """<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @media (min-width: 1024px) {
-  video {
-    transform: scale(1.05);
-    object-fit: contain;
-    background-color: black;
-  }
-}
-
     <title>Ecos Universe</title>
     <style>
       body {
@@ -38,6 +33,15 @@
         object-fit: cover;
         object-position: center;
         z-index: 0;
+        background-color: black;
+      }
+
+      /* Ajuste para pantallas grandes */
+      @media (min-width: 1024px) {
+        video {
+          object-fit: contain;
+          transform: scale(1.05);
+        }
       }
 
       .ecos-label {
@@ -51,12 +55,12 @@
       }
 
       .be-ecos-container {
-        position: absolute;
-        bottom: 3rem;
+        position: fixed;
+        bottom: 35vh;
         width: 100%;
         display: flex;
         justify-content: center;
-        z-index: 999;
+        z-index: 9999;
       }
 
       .be-ecos-btn {
@@ -82,7 +86,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 1000;
+        z-index: 10000;
         background: white;
         padding: 2rem;
         border-radius: 1rem;
@@ -115,18 +119,17 @@
       </video>
 
       <div class="ecos-label">ecos</div>
-
-      <div class="be-ecos-container" style="bottom: 35vh;">
-  <button
-    id="be-ecos-btn"
-    onclick="showForm()"
-    class="be-ecos-btn"
-  >
-    be ecos
-  </button>
-</div>
-
     </section>
+
+    <div class="be-ecos-container">
+      <button
+        id="be-ecos-btn"
+        onclick="showForm()"
+        class="be-ecos-btn"
+      >
+        be ecos
+      </button>
+    </div>
 
     <div id="signup-form">
       <form>
@@ -144,6 +147,14 @@
     </script>
   </body>
 </html>
+"""
+
+# Guardar como archivo HTML
+output_path = Path("/mnt/data/index_ecos_pc_fixed.html")
+output_path.write_text(html_final, encoding="utf-8")
+
+output_path.name
+
 
 
 
