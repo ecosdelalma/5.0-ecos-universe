@@ -1,7 +1,7 @@
 from pathlib import Path
 
-# HTML con ajustes finales: botón centrado (en la mitad del mar) y video ajustado para PC
-html_final = """<!DOCTYPE html>
+# HTML con animación de zoom lento solo en PC
+html_zoom = """<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -36,11 +36,19 @@ html_final = """<!DOCTYPE html>
         background-color: black;
       }
 
-      /* Ajuste para pantallas grandes */
       @media (min-width: 1024px) {
         video {
           object-fit: contain;
-          transform: scale(1.05);
+          animation: zoomSlow 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes zoomSlow {
+          0% {
+            transform: scale(1);
+          }
+          100% {
+            transform: scale(1.08);
+          }
         }
       }
 
@@ -150,10 +158,11 @@ html_final = """<!DOCTYPE html>
 """
 
 # Guardar como archivo HTML
-output_path = Path("/mnt/data/index_ecos_pc_fixed.html")
-output_path.write_text(html_final, encoding="utf-8")
+output_path = Path("/mnt/data/index_ecos_animated_zoom.html")
+output_path.write_text(html_zoom, encoding="utf-8")
 
 output_path.name
+
 
 
 
