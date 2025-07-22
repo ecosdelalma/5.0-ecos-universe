@@ -1,133 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ecos Universe</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      font-family: sans-serif;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecos Universe</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: sans-serif;
+        background: #000;
+      }
 
-    video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
+      section {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 0;
+      }
 
-    section {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      z-index: 0;
-    }
+      video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+      }
 
-    .center-content {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-    }
+      .ecos-label {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 10;
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: black;
+      }
 
-    .be-ecos-btn {
-      color: white;
-      border: 1px solid white;
-      padding: 0.5rem 1.5rem;
-      border-radius: 9999px;
-      font-size: 1rem;
-      backdrop-filter: blur(6px);
-      background-color: rgba(255, 255, 255, 0.1);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+      .be-ecos-container {
+        position: absolute;
+        bottom: 3rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        z-index: 999;
+      }
 
-    .be-ecos-btn:hover {
-      background-color: white;
-      color: black;
-    }
+      .be-ecos-btn {
+        color: white;
+        border: 1px solid white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 1rem;
+        backdrop-filter: blur(6px);
+        background-color: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
-    #signup-form {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 20;
-      background: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    }
+      .be-ecos-btn:hover {
+        background-color: white;
+        color: black;
+      }
 
-    #signup-form input {
-      display: block;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-    }
+      #signup-form {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
 
-    #signup-form button {
-      padding: 0.5rem 1.5rem;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 0.5rem;
-    }
-  </style>
-<body>
-  <body style="margin: 0; padding: 0; overflow: hidden; font-family: sans-serif; background: #000;">
-  <section style="position: fixed; inset: 0; width: 100vw; height: 100vh; overflow: hidden; z-index: 0;">
-    <video autoplay muted loop playsinline style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: 0;">
-      <source src="video.mp4" type="video/mp4" />
-      Tu navegador no soporta videos.
-    </video>
+      #signup-form input {
+        display: block;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+      }
 
-    <!-- Texto ecos -->
-    <div style="position: absolute; top: 1rem; left: 1rem; z-index: 10; font-size: 1.2rem; font-weight: 400; color: black;">
-      ecos
+      #signup-form button {
+        padding: 0.5rem 1.5rem;
+        background: #000;
+        color: #fff;
+        border: none;
+        border-radius: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <video autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4" />
+        Tu navegador no soporta videos.
+      </video>
+
+      <div class="ecos-label">ecos</div>
+
+      <div class="be-ecos-container">
+        <button
+          id="be-ecos-btn"
+          onclick="showForm()"
+          class="be-ecos-btn"
+        >
+          be ecos
+        </button>
+      </div>
+    </section>
+
+    <div id="signup-form">
+      <form>
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Contraseña" />
+        <button type="submit">Unirme</button>
+      </form>
     </div>
 
-    <!-- Botón be ecos -->
-    <div style="position: absolute; bottom: 3rem; width: 100%; display: flex; justify-content: center; z-index: 999;">
-      <button id="be-ecos-btn"
-        onclick="showForm()"
-        style="color: white; border: 1px solid white; padding: 0.5rem 1.5rem; border-radius: 9999px; font-size: 1rem; backdrop-filter: blur(6px); background-color: rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;"
-        onmouseover="this.style.backgroundColor='white'; this.style.color='black';"
-        onmouseout="this.style.backgroundColor='rgba(255,255,255,0.1)'; this.style.color='white';">
-        be ecos
-      </button>
-    </div>
-  </section>
+    <script>
+      function showForm() {
+        document.getElementById("signup-form").style.display = "block";
+        document.getElementById("be-ecos-btn").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
 
-  <!-- Formulario emergente -->
-  <div id="signup-form" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; background: white; padding: 2rem; border-radius: 1rem;">
-    <form>
-      <input type="email" placeholder="Email" style="display: block; margin-bottom: 1rem; padding: 0.5rem; width: 100%;" />
-      <input type="password" placeholder="Contraseña" style="display: block; margin-bottom: 1rem; padding: 0.5rem; width: 100%;" />
-      <button type="submit" style="padding: 0.5rem 1.5rem; background: #000; color: #fff; border: none; border-radius: 0.5rem;">Unirme</button>
-    </form>
-  </div>
-
-  <script>
-    function showForm() {
-      document.getElementById('signup-form').style.display = 'block';
-      document.getElementById('be-ecos-btn').style.display = 'none';
-    }
-  </script>
-</body>
 
 
 
