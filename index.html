@@ -87,7 +87,6 @@
       border-radius: 0.5rem;
     }
   </style>
-</head>
 <body>
   <section>
     <video autoplay muted loop playsinline>
@@ -95,11 +94,34 @@
       Tu navegador no soporta videos.
     </video>
 
-    <div class="center-content" style="justify-content: flex-end; padding-bottom: 4rem;">
+    <!-- Texto ecos arriba izquierda -->
+    <div style="
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 10;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: black;
+      font-family: sans-serif;
+    ">
+      ecos
+    </div>
+
+    <!-- Botón abajo centrado -->
+    <div style="
+      position: absolute;
+      bottom: 3rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    ">
       <button class="be-ecos-btn" onclick="showForm()" id="be-ecos-btn">be ecos</button>
     </div>
   </section>
 
+  <!-- Formulario emergente -->
   <div id="signup-form">
     <form>
       <input type="email" placeholder="Email" />
@@ -115,6 +137,7 @@
     }
   </script>
 </body>
+
 
 
 
